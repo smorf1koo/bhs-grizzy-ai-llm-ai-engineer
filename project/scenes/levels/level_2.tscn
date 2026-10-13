@@ -1,0 +1,255 @@
+[gd_scene load_steps=15 format=3]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_level"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://scenes/coin.tscn" id="3_coin"]
+[ext_resource type="PackedScene" path="res://scenes/enemy.tscn" id="4_enemy"]
+[ext_resource type="PackedScene" path="res://scenes/goal.tscn" id="5_goal"]
+[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="6_hud"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64x664"]
+size = Vector2(64, 664)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_600x64"]
+size = Vector2(600, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_500x64"]
+size = Vector2(500, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_700x64"]
+size = Vector2(700, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1000x64"]
+size = Vector2(1000, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_120x24"]
+size = Vector2(120, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_160x24"]
+size = Vector2(160, 24)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kill"]
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_level")
+level_title = "Level 2: Rocky Hills"
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(64, 560)
+
+[node name="Terrain" type="Node2D" parent="."]
+
+[node name="Ground1" type="StaticBody2D" parent="Terrain" groups=["ground"]]
+position = Vector2(-32, 332)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Ground1"]
+shape = SubResource("RectangleShape2D_64x664")
+
+[node name="Visual" type="Polygon2D" parent="Terrain/Ground1"]
+color = Color(0.36, 0.28, 0.2, 1)
+polygon = PackedVector2Array(-32, -332, 32, -332, 32, 332, -32, 332)
+
+[node name="Ground2" type="StaticBody2D" parent="Terrain" groups=["ground"]]
+position = Vector2(300, 632)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Ground2"]
+shape = SubResource("RectangleShape2D_600x64")
+
+[node name="Visual" type="Polygon2D" parent="Terrain/Ground2"]
+color = Color(0.36, 0.28, 0.2, 1)
+polygon = PackedVector2Array(-300, -32, 300, -32, 300, 32, -300, 32)
+
+[node name="Ground3" type="StaticBody2D" parent="Terrain" groups=["ground"]]
+position = Vector2(970, 632)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Ground3"]
+shape = SubResource("RectangleShape2D_500x64")
+
+[node name="Visual" type="Polygon2D" parent="Terrain/Ground3"]
+color = Color(0.36, 0.28, 0.2, 1)
+polygon = PackedVector2Array(-250, -32, 250, -32, 250, 32, -250, 32)
+
+[node name="Ground4" type="StaticBody2D" parent="Terrain" groups=["ground"]]
+position = Vector2(1910, 632)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Ground4"]
+shape = SubResource("RectangleShape2D_700x64")
+
+[node name="Visual" type="Polygon2D" parent="Terrain/Ground4"]
+color = Color(0.36, 0.28, 0.2, 1)
+polygon = PackedVector2Array(-350, -32, 350, -32, 350, 32, -350, 32)
+
+[node name="Ground5" type="StaticBody2D" parent="Terrain" groups=["ground"]]
+position = Vector2(2900, 632)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Ground5"]
+shape = SubResource("RectangleShape2D_1000x64")
+
+[node name="Visual" type="Polygon2D" parent="Terrain/Ground5"]
+color = Color(0.36, 0.28, 0.2, 1)
+polygon = PackedVector2Array(-500, -32, 500, -32, 500, 32, -500, 32)
+
+[node name="Ground6" type="StaticBody2D" parent="Terrain" groups=["ground"]]
+position = Vector2(3432, 332)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Ground6"]
+shape = SubResource("RectangleShape2D_64x664")
+
+[node name="Visual" type="Polygon2D" parent="Terrain/Ground6"]
+color = Color(0.36, 0.28, 0.2, 1)
+polygon = PackedVector2Array(-32, -332, 32, -332, 32, 332, -32, 332)
+
+[node name="Platform1" type="StaticBody2D" parent="Terrain" groups=["platforms"]]
+position = Vector2(1320, 552)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Platform1"]
+shape = SubResource("RectangleShape2D_120x24")
+
+[node name="Visual" type="Polygon2D" parent="Terrain/Platform1"]
+color = Color(0.45, 0.6, 0.3, 1)
+polygon = PackedVector2Array(-60, -12, 60, -12, 60, 12, -60, 12)
+
+[node name="Platform2" type="StaticBody2D" parent="Terrain" groups=["platforms"]]
+position = Vector2(1480, 482)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Platform2"]
+shape = SubResource("RectangleShape2D_120x24")
+
+[node name="Visual" type="Polygon2D" parent="Terrain/Platform2"]
+color = Color(0.45, 0.6, 0.3, 1)
+polygon = PackedVector2Array(-60, -12, 60, -12, 60, 12, -60, 12)
+
+[node name="Platform3" type="StaticBody2D" parent="Terrain" groups=["platforms"]]
+position = Vector2(900, 512)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Platform3"]
+shape = SubResource("RectangleShape2D_160x24")
+
+[node name="Visual" type="Polygon2D" parent="Terrain/Platform3"]
+color = Color(0.45, 0.6, 0.3, 1)
+polygon = PackedVector2Array(-80, -12, 80, -12, 80, 12, -80, 12)
+
+[node name="Platform4" type="StaticBody2D" parent="Terrain" groups=["platforms"]]
+position = Vector2(1780, 472)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Platform4"]
+shape = SubResource("RectangleShape2D_160x24")
+
+[node name="Visual" type="Polygon2D" parent="Terrain/Platform4"]
+color = Color(0.45, 0.6, 0.3, 1)
+polygon = PackedVector2Array(-80, -12, 80, -12, 80, 12, -80, 12)
+
+[node name="Platform5" type="StaticBody2D" parent="Terrain" groups=["platforms"]]
+position = Vector2(2040, 392)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Platform5"]
+shape = SubResource("RectangleShape2D_160x24")
+
+[node name="Visual" type="Polygon2D" parent="Terrain/Platform5"]
+color = Color(0.45, 0.6, 0.3, 1)
+polygon = PackedVector2Array(-80, -12, 80, -12, 80, 12, -80, 12)
+
+[node name="Platform6" type="StaticBody2D" parent="Terrain" groups=["platforms"]]
+position = Vector2(2680, 512)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Platform6"]
+shape = SubResource("RectangleShape2D_160x24")
+
+[node name="Visual" type="Polygon2D" parent="Terrain/Platform6"]
+color = Color(0.45, 0.6, 0.3, 1)
+polygon = PackedVector2Array(-80, -12, 80, -12, 80, 12, -80, 12)
+
+[node name="Platform7" type="StaticBody2D" parent="Terrain" groups=["platforms"]]
+position = Vector2(2930, 432)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Platform7"]
+shape = SubResource("RectangleShape2D_160x24")
+
+[node name="Visual" type="Polygon2D" parent="Terrain/Platform7"]
+color = Color(0.45, 0.6, 0.3, 1)
+polygon = PackedVector2Array(-80, -12, 80, -12, 80, 12, -80, 12)
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Coin1" parent="Coins" instance=ExtResource("3_coin")]
+position = Vector2(300, 570)
+
+[node name="Coin2" parent="Coins" instance=ExtResource("3_coin")]
+position = Vector2(660, 520)
+
+[node name="Coin3" parent="Coins" instance=ExtResource("3_coin")]
+position = Vector2(900, 470)
+
+[node name="Coin4" parent="Coins" instance=ExtResource("3_coin")]
+position = Vector2(1100, 570)
+
+[node name="Coin5" parent="Coins" instance=ExtResource("3_coin")]
+position = Vector2(1320, 510)
+
+[node name="Coin6" parent="Coins" instance=ExtResource("3_coin")]
+position = Vector2(1480, 440)
+
+[node name="Coin7" parent="Coins" instance=ExtResource("3_coin")]
+position = Vector2(1780, 430)
+
+[node name="Coin8" parent="Coins" instance=ExtResource("3_coin")]
+position = Vector2(2040, 350)
+
+[node name="Coin9" parent="Coins" instance=ExtResource("3_coin")]
+position = Vector2(2330, 520)
+
+[node name="Coin10" parent="Coins" instance=ExtResource("3_coin")]
+position = Vector2(2680, 470)
+
+[node name="Coin11" parent="Coins" instance=ExtResource("3_coin")]
+position = Vector2(2930, 390)
+
+[node name="Coin12" parent="Coins" instance=ExtResource("3_coin")]
+position = Vector2(3200, 570)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy1" parent="Enemies" instance=ExtResource("4_enemy")]
+position = Vector2(1000, 584)
+speed = 80.0
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("4_enemy")]
+position = Vector2(1900, 584)
+speed = 90.0
+start_direction = 1
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("4_enemy")]
+position = Vector2(2700, 584)
+speed = 100.0
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource("4_enemy")]
+position = Vector2(3100, 584)
+speed = 80.0
+start_direction = 1
+
+[node name="Goal" parent="." instance=ExtResource("5_goal")]
+position = Vector2(3340, 600)
+
+[node name="KillZone" type="Area2D" parent="."]
+position = Vector2(0, 760)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+shape = SubResource("WorldBoundaryShape2D_kill")
+
+[node name="HUD" parent="." instance=ExtResource("6_hud")]
+
+[connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="collected" from="Coins/Coin1" to="." method="_on_coin_collected"]
+[connection signal="collected" from="Coins/Coin2" to="." method="_on_coin_collected"]
+[connection signal="collected" from="Coins/Coin3" to="." method="_on_coin_collected"]
+[connection signal="collected" from="Coins/Coin4" to="." method="_on_coin_collected"]
+[connection signal="collected" from="Coins/Coin5" to="." method="_on_coin_collected"]
+[connection signal="collected" from="Coins/Coin6" to="." method="_on_coin_collected"]
+[connection signal="collected" from="Coins/Coin7" to="." method="_on_coin_collected"]
+[connection signal="collected" from="Coins/Coin8" to="." method="_on_coin_collected"]
+[connection signal="collected" from="Coins/Coin9" to="." method="_on_coin_collected"]
+[connection signal="collected" from="Coins/Coin10" to="." method="_on_coin_collected"]
+[connection signal="collected" from="Coins/Coin11" to="." method="_on_coin_collected"]
+[connection signal="collected" from="Coins/Coin12" to="." method="_on_coin_collected"]
+[connection signal="reached" from="Goal" to="." method="_on_goal_reached"]
+[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
